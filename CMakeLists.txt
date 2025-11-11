@@ -5,6 +5,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 if(NOT APPLE)
     # set(CMAKE_CXX_CLANG_TIDY clang-tidy)
 endif()
+include_directories(/opt/local/include)
 
 # Find dependencies provided by vcpkg (via vcpkg.cmake)
 find_package(SDL2 CONFIG REQUIRED)
@@ -34,7 +35,7 @@ set(
 
 # main target
 add_executable(main ${CPP_TEMPLATE_SOURCES})
-target_link_libraries(main PRIVATE SDL2::SDL2 GLEW::GLEW)
+target_link_libraries(main PRIVATE SDL2::SDL2 GLEW::GLEW /opt/local/lib/libfreeimage.dylib)
 set_property(TARGET main PROPERTY CXX_STANDARD 17)
 
 # tests target
